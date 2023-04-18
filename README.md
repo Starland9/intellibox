@@ -1,3 +1,4 @@
 # intellibox
 
-A new Flutter project.
+Mon appli flutter contenant des trucs intelligents tout en un
+
