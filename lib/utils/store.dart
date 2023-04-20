@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/material.dart';
 import 'package:intellibox/modules/devinette/view.dart';
 import 'package:intellibox/utils/assets.dart';
 
@@ -23,4 +22,6 @@ class AppStore {
       null,
     ),
   ];
+
+  static String locale = "fr";
 }

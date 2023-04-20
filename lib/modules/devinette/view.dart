@@ -34,18 +34,23 @@ class _DevinettePageState extends State<DevinettePage> {
                 Text(
                   devinette!.title.toUpperCase(),
                   style: GoogleFonts.aBeeZee(
-                    fontSize: 30,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                Text(
-                  devinette!.question,
-                  style: GoogleFonts.aBeeZee(
-                    fontSize: 18,
-                    color: Colors.amber,
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Text(
+                      devinette!.question,
+                      textAlign: TextAlign.justify,
+                      style: GoogleFonts.aBeeZee(
+                        fontSize: 18,
+                        color: Colors.amber,
+                      ),
+                    ),
                   ),
                 ),
                 Divider(),
@@ -57,6 +62,9 @@ class _DevinettePageState extends State<DevinettePage> {
                 ),
               ],
             )),
+          SizedBox(
+            height: 30,
+          ),
           AsyncButtonBuilder(
             child: MainButton(
               text: 'Générer',
@@ -80,7 +88,7 @@ class _DevinettePageState extends State<DevinettePage> {
   }
 
   Future<void> _generate() async {
-    Devinette? d = await Ninja.getDevinette(1);
+    Devinette? d = await Devinette.getDevinette(1);
     if (d != null) {
       await Devinette.translated(d).then((value) {
         setState(() {

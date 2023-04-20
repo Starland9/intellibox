@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intellibox/utils/store.dart';
+import 'package:translator/translator.dart';
 
 class Nav {
   static push(BuildContext context, Widget page) {
@@ -13,3 +15,6 @@ class Nav {
     ));
   }
 }
+
+Future<String> tr(String text) async =>
+    (await text.translate(to: AppStore.locale)).text;
