@@ -1,3 +1,4 @@
+
 import 'package:intellibox/utils/logic.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'model.g.dart';
@@ -23,4 +24,8 @@ class Mood {
         text: await tr(mood.text),
         sentiment: await tr(mood.sentiment));
   }
+
+
+
+ 
 }

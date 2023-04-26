@@ -1,10 +1,7 @@
-import 'dart:convert';
 
 import 'package:intellibox/utils/logic.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:http/http.dart' as http;
 
-import '../../.env/keys.dart';
 
 part 'model.g.dart';
 
@@ -29,19 +26,4 @@ class Devinette {
   }
 
 
-
-  // 
-  static Future<Devinette?> getDevinette(int? limit) async {
-    try {
-      var r = await http
-          .get(Uri.parse("https://api.api-ninjas.com/v1/riddles"), headers: {
-        if (limit != null) "limit": limit.toString(),
-        'X-Api-Key': ApiKeys.ninja,
-      });
-
-      return Devinette.fromJson(jsonDecode(r.body)[0]);
-    } catch (e) {
-      return null;
-    }
-  }
 }

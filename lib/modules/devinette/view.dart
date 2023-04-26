@@ -2,11 +2,11 @@
 
 import 'package:async_button_builder/async_button_builder.dart';
 import 'package:flutter/material.dart';
-import 'package:getwidget/components/button/gf_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intellibox/modules/apis/ninja.dart';
 import 'package:intellibox/modules/devinette/model.dart';
-import 'package:intellibox/utils/theme.dart';
+
+import '../../widgets/btns.dart';
 
 class DevinettePage extends StatefulWidget {
   const DevinettePage({super.key});
@@ -88,7 +88,7 @@ class _DevinettePageState extends State<DevinettePage> {
   }
 
   Future<void> _generate() async {
-    Devinette? d = await Devinette.getDevinette(1);
+    Devinette? d = await Ninja.getDevinette(1);
     if (d != null) {
       await Devinette.translated(d).then((value) {
         setState(() {
@@ -99,33 +99,4 @@ class _DevinettePageState extends State<DevinettePage> {
   }
 }
 
-class MainButton extends StatelessWidget {
-  const MainButton({
-    super.key,
-    required this.text,
-    this.icon,
-    this.onPressed,
-  });
 
-  final String text;
-  final Widget? icon;
-  final Function()? onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return GFButton(
-      icon: icon,
-      onPressed: onPressed,
-      text: text,
-      color: Scolors.primary,
-      splashColor: Scolors.bgColor.withOpacity(0.5),
-      textStyle: GoogleFonts.aBeeZee(
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-        color: Scolors.bgColor,
-      ),
-      fullWidthButton: true,
-      size: 45,
-    );
-  }
-}

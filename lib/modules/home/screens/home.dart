@@ -1,9 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/card/gf_card.dart';
-import 'package:getwidget/components/list_tile/gf_list_tile.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intellibox/models/tool/tool.dart';
 import 'package:intellibox/modules/global/global_tool_page.dart';

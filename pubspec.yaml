@@ -21,8 +21,9 @@ dependencies:
   google_fonts: ^4.0.3
   google_sign_in: ^6.1.0
   http: ^0.13.5
-  image_picker: ^0.8.7+3
+  image_picker: ^0.8.7+4
   json_annotation: ^4.8.0
+  opencv: ^1.0.4
   translator: ^0.1.7
 
 dev_dependencies:

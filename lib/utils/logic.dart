@@ -18,3 +18,6 @@ class Nav {
 
 Future<String> tr(String text) async =>
     (await text.translate(to: AppStore.locale)).text;
+
+Uri getEndPoint(String word) =>
+    Uri.parse("https://api.api-ninjas.com/v1/$word");
