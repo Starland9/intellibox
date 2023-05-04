@@ -89,23 +89,26 @@ class _VisageDetectPageState extends State<VisageDetectPage> {
   }
 }
 
+// ignore: must_be_immutable
 class ImagePaint extends StatelessWidget {
-  const ImagePaint({super.key, required this.path, required this.detects});
+  ImagePaint({super.key, required this.path, required this.detects});
   final String path;
   final List<VisageDetect> detects;
+  late Image image;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Image.file(
-          File(path),
-          fit: BoxFit.cover,
-        ),
-        CustomPaint(
-          painter: MyPainter()..ds = detects,
-        )
-      ],
+    image = Image.file(
+      File(path),
+      fit: BoxFit.contain,
+      width: 350,
+      height: 500,
+    );
+
+    return CustomPaint(
+      foregroundPainter: MyPainter(context)..ds = detects,
+      size: const Size(200, 300),
+      child: image,
     );
   }
 }
@@ -113,7 +116,11 @@ class ImagePaint extends StatelessWidget {
 class MyPainter extends CustomPainter {
   Paint pt = Paint();
 
+  final BuildContext context;
+
   List<VisageDetect> ds = [];
+
+  MyPainter(this.context);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -123,18 +130,12 @@ class MyPainter extends CustomPainter {
     pt.style = PaintingStyle.stroke;
 
     for (var d in ds) {
-      canvas.drawRect(
-          Rect.fromCenter(
-            center: Offset(d.x.toDouble(), d.y.toDouble()),
-            width: d.width.toDouble(),
-            height: d.height.toDouble(),
-          ),
-          pt);
+      final box = context.findRenderObject() as RenderBox;
+      final widgetRect = const Offset(50, 50) & box.size;
+      canvas.translate(widgetRect.left, widgetRect.top);
 
       canvas.drawRect(
-          Rect.fromLTWH(d.x.toDouble(), d.y.toDouble(), d.width.toDouble(),
-              d.height.toDouble()),
-          pt);
+          Rect.fromLTWH(0, 0, d.width.toDouble(), d.height.toDouble()), pt);
     }
   }
 

@@ -1,3 +1,4 @@
+import 'package:flutter/painting.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'model.g.dart';
@@ -15,6 +16,9 @@ class VisageDetect {
     this.width,
     this.height,
   );
+
+  Size get size => Size(width.toDouble(), height.toDouble());
+  Size get origin => Size(x.toDouble(), y.toDouble());
 
   factory VisageDetect.fromJson(Map<String, dynamic> json) =>
       _$VisageDetectFromJson(json);

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:intellibox/modules/devinette/view.dart';
+import 'package:intellibox/modules/dog/view.dart';
 import 'package:intellibox/modules/visage_detect/view.dart';
 import 'package:intellibox/utils/assets.dart';
 
@@ -29,8 +30,16 @@ class AppStore {
       "Détecteur de visage",
       "",
       ToolCategory.divertissement,
-      SImages.sentimentLogo,
+      SImages.visageLogo,
       VisageDetectPage(),
+    ),
+    //
+    Tool(
+      "Inpecteur de chiens",
+      "",
+      ToolCategory.divertissement,
+      SImages.dogLogo,
+      DogPage(),
     ),
   ];
 

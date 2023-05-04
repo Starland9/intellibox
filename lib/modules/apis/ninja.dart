@@ -5,8 +5,10 @@ import 'package:http/http.dart' as http;
 import 'package:intellibox/.env/keys.dart';
 import 'package:intellibox/modules/devinette/model.dart';
 import 'package:intellibox/modules/visage_detect/model.dart';
+import 'package:translator/translator.dart';
 
 import '../../utils/logic.dart';
+import '../dog/model.dart';
 import '../mood/model.dart';
 
 class Ninja {
@@ -54,6 +56,18 @@ class Ninja {
       return List.from(jsonDecode(rString))
           .map((e) => VisageDetect.fromJson(e))
           .toList();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  static Future<List<Dog>?> getDog(String name) async {
+    try {
+      String enName = (await name.translate(to: "en")).text;
+      var r = await http.get(getEndPoint("dogs?name=$enName"), headers: {
+        'X-Api-Key': ApiKeys.ninja,
+      });
+      return List.from(jsonDecode(r.body)).map((e) => Dog.fromJson(e)).toList();
     } catch (e) {
       return null;
     }
