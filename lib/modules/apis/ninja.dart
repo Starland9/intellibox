@@ -10,6 +10,7 @@ import 'package:translator/translator.dart';
 import '../../utils/logic.dart';
 import '../dog/model.dart';
 import '../mood/model.dart';
+import '../object_detect/model.dart';
 
 class Ninja {
   //
@@ -56,6 +57,36 @@ class Ninja {
       return List.from(jsonDecode(rString))
           .map((e) => VisageDetect.fromJson(e))
           .toList();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  static Future<List<AnObject>?> objectDetect(File imageFile) async {
+    try {
+      var byte = await imageFile.readAsBytes();
+      var file = http.MultipartFile.fromBytes(
+        "image",
+        byte,
+        filename: imageFile.path,
+      );
+
+      var q = http.MultipartRequest("POST", getEndPoint("objectdetection"));
+
+      q.files.add(file);
+      q.headers['X-Api-Key'] = ApiKeys.ninja;
+
+      var r = await q.send();
+      var rString = await r.stream.bytesToString();
+      List<AnObject> list = List.from(jsonDecode(rString))
+          .map((e) => AnObject.fromJson(e))
+          .toList();
+
+      List<AnObject>? translated = [];
+      for (var element in list) {
+        translated.add(await AnObject.translated(element));
+      }
+      return translated;
     } catch (e) {
       return null;
     }

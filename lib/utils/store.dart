@@ -2,6 +2,7 @@
 
 import 'package:intellibox/modules/devinette/view.dart';
 import 'package:intellibox/modules/dog/view.dart';
+import 'package:intellibox/modules/object_detect/view.dart';
 import 'package:intellibox/modules/visage_detect/view.dart';
 import 'package:intellibox/utils/assets.dart';
 
@@ -40,6 +41,14 @@ class AppStore {
       ToolCategory.divertissement,
       SImages.dogLogo,
       DogPage(),
+    ),
+    //
+    Tool(
+      "Detecteur d'objets",
+      "",
+      ToolCategory.divertissement,
+      SImages.objectDetectLogo,
+      ObjectDetect(),
     ),
   ];
 
