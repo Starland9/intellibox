@@ -4,8 +4,9 @@ import 'package:async_button_builder/async_button_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intellibox/modules/apis/ninja.dart';
-import 'package:intellibox/modules/visage_detect/model.dart';
 import 'package:intellibox/widgets/btns.dart';
+
+import 'model.dart';
 
 class VisageDetectPage extends StatefulWidget {
   const VisageDetectPage({super.key});

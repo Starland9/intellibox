@@ -4,13 +4,13 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:intellibox/.env/keys.dart';
 import 'package:intellibox/modules/devinette/model.dart';
-import 'package:intellibox/modules/visage_detect/model.dart';
 import 'package:translator/translator.dart';
 
 import '../../utils/logic.dart';
+import '../detectors/object_detect/model.dart';
+import '../detectors/visage_detect/model.dart';
 import '../dog/model.dart';
 import '../mood/model.dart';
-import '../object_detect/model.dart';
 
 class Ninja {
   //

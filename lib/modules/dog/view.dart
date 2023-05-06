@@ -109,7 +109,7 @@ class _DogPageState extends State<DogPage> {
             child: CupertinoSearchTextField(
               placeholder: "Rechercher un chien",
               prefixIcon: const Icon(Icons.search),
-              // suffixIcon: ``,
+              suffixIcon: const Icon(Icons.close),
               backgroundColor: Scolors.primary,
               onSubmitted: (value) {
                 _refreshDog(value);

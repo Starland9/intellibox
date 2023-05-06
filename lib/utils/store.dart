@@ -2,11 +2,12 @@
 
 import 'package:intellibox/modules/devinette/view.dart';
 import 'package:intellibox/modules/dog/view.dart';
-import 'package:intellibox/modules/object_detect/view.dart';
-import 'package:intellibox/modules/visage_detect/view.dart';
+import 'package:intellibox/modules/text_to_image/stable_diffusion/view.dart';
 import 'package:intellibox/utils/assets.dart';
 
 import '../models/tool/tool.dart';
+import '../modules/detectors/object_detect/view.dart';
+import '../modules/detectors/visage_detect/view.dart';
 import '../modules/mood/view.dart';
 
 class AppStore {
@@ -49,6 +50,14 @@ class AppStore {
       ToolCategory.divertissement,
       SImages.objectDetectLogo,
       ObjectDetect(),
+    ),
+    //
+    Tool(
+      "Générateur d'image",
+      "",
+      ToolCategory.divertissement,
+      SImages.imageGen1Logo,
+      ImageGen1(),
     ),
   ];
 
