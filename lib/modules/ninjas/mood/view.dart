@@ -4,7 +4,7 @@ import 'package:intellibox/modules/apis/ninja.dart';
 import 'package:intellibox/utils/theme.dart';
 import 'package:translator/translator.dart';
 
-import '../../widgets/btns.dart';
+import '../../../widgets/btns.dart';
 import 'model.dart';
 
 class MoodPage extends StatefulWidget {

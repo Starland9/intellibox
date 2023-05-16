@@ -1,14 +1,15 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:intellibox/modules/devinette/view.dart';
-import 'package:intellibox/modules/dog/view.dart';
-import 'package:intellibox/modules/text_to_image/stable_diffusion/view.dart';
+import 'package:intellibox/modules/huggingFace/text_to_image/stable_diffusion/view.dart';
 import 'package:intellibox/utils/assets.dart';
 
 import '../models/tool/tool.dart';
-import '../modules/detectors/object_detect/view.dart';
-import '../modules/detectors/visage_detect/view.dart';
-import '../modules/mood/view.dart';
+import '../modules/ninjas/detectors/object_detect/view.dart';
+import '../modules/ninjas/detectors/visage_detect/view.dart';
+import '../modules/ninjas/devinette/view.dart';
+import '../modules/ninjas/dog/view.dart';
+import '../modules/ninjas/mood/view.dart';
+
 
 class AppStore {
   static List<Tool> tools = [
@@ -50,6 +51,14 @@ class AppStore {
       ToolCategory.divertissement,
       SImages.objectDetectLogo,
       ObjectDetect(),
+    ),
+    //
+    Tool(
+      "Générateur d'image",
+      "",
+      ToolCategory.divertissement,
+      SImages.imageGen1Logo,
+      ImageGen1(),
     ),
     //
     Tool(

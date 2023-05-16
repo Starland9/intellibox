@@ -7,7 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intellibox/modules/apis/ninja.dart';
 import 'package:intellibox/widgets/btns.dart';
 
-import '../../../utils/theme.dart';
+import '../../../../utils/theme.dart';
 import '../visage_detect/model.dart';
 import 'model.dart';
 

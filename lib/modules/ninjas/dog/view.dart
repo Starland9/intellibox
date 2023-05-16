@@ -2,8 +2,9 @@ import 'package:advance_animated_progress_indicator/advance_animated_progress_in
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intellibox/modules/apis/ninja.dart';
-import 'package:intellibox/modules/dog/model.dart';
 import 'package:intellibox/utils/theme.dart';
+
+import 'model.dart';
 
 class DogView extends StatelessWidget {
   const DogView({super.key, required this.dog});
