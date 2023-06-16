@@ -2,7 +2,7 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:intellibox/modules/auth/screens/login.dart';
+import 'package:intellibox/modules/home/screens/home.dart';
 import 'package:intellibox/utils/theme.dart';
 
 import 'firebase_options.dart';
@@ -23,7 +23,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: STheme.normal,
-      home: LoginPage(),
+      home: HomePage(),
     );
   }
 }

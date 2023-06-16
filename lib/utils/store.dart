@@ -4,6 +4,7 @@ import 'package:intellibox/modules/huggingFace/text_to_image/stable_diffusion/vi
 import 'package:intellibox/utils/assets.dart';
 
 import '../models/tool/tool.dart';
+import '../modules/huggingFace/image_answer/view.dart';
 import '../modules/ninjas/detectors/object_detect/view.dart';
 import '../modules/ninjas/detectors/visage_detect/view.dart';
 import '../modules/ninjas/devinette/view.dart';
@@ -62,11 +63,11 @@ class AppStore {
     ),
     //
     Tool(
-      "Générateur d'image",
+      "Analyseur d'image",
       "",
       ToolCategory.divertissement,
-      SImages.imageGen1Logo,
-      ImageGen1(),
+      SImages.answerImageLogo,
+      ImageAnswer(),
     ),
   ];
 

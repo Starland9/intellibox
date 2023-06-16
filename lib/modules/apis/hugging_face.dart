@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
+import 'package:intellibox/utils/logic.dart';
 import 'package:translator/translator.dart';
 
 import '../../.env/keys.dart';
@@ -47,28 +48,31 @@ class HuggingFace {
 
   static Future? answerImage(File imageFile, String question) async {
     try {
-      var byte = await imageFile.readAsBytes();
-      var file = http.MultipartFile.fromBytes(
-        "image",
-        byte,
-        filename: imageFile.path,
+      // Read the image file
+      var imageBytes = await imageFile.readAsBytes();
+
+      // Prepare the request headers and payload
+      Map<String, String> headers = {
+        'Authorization': 'Bearer ${ApiKeys.huggingFace}',
+        'Content-Type': 'application/octet-stream',
+      };
+      var apiUrl =
+          HuggingFace()._getModel("nlpconnect/vit-gpt2-image-captioning");
+
+      // Make the POST request
+      http.Response response = await http.post(
+        apiUrl,
+        headers: headers,
+        body: imageBytes,
       );
 
-      var q = http.MultipartRequest(
-        "POST",
-        HuggingFace()._getModel("dandelin/vilt-b32-finetuned-vqa"),
-      );
-
-      q.files.add(file);
-      q.headers['Authorization'] = "Bearer ${ApiKeys.huggingFace}";
-      q.headers['Accept'] = "*/*";
-      q.headers['Content-Type'] = "application/json";
-      q.fields["question"] = question;
-
-      var r = await q.send();
-      var rString = await r.stream.bytesToString();
-      Map m = jsonDecode(rString);
-      print(m);
+      if (response.statusCode == 200) {
+        print(response.body);
+        String text = jsonDecode(response.body)[0]["generated_text"];
+        return await tr(text);
+      } else {
+        return 'Request failed with status code ${response.statusCode}';
+      }
     } catch (e) {
       print(e);
       return null;

@@ -182,3 +182,21 @@ class _DogPageState extends State<DogPage> {
     });
   }
 }
+
+class SearchResponse extends StatelessWidget {
+  const SearchResponse({
+    super.key,
+    required this.dogs,
+  });
+
+  final List<Dog> dogs;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Resultats de recherche"),
+      ),
+    );
+  }
+}
