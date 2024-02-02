@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'package:intellibox/.env/keys.dart';
 import 'package:translator/translator.dart';
 
 import '../../utils/logic.dart';
@@ -12,14 +11,13 @@ import '../ninjas/devinette/model.dart';
 import '../ninjas/dog/model.dart';
 import '../ninjas/mood/model.dart';
 
-
 class Ninja {
   //
   static Future<Devinette?> getDevinette(int? limit) async {
     try {
       var r = await http.get(getEndPoint("riddles"), headers: {
         if (limit != null) "limit": limit.toString(),
-        'X-Api-Key': ApiKeys.ninja,
+        'X-Api-Key': "Uo6DyVrhfSYiiqWtDXpF9BpBdu657qMhEyVlPFOO",
       });
 
       return Devinette.fromJson(jsonDecode(r.body)[0]);
@@ -31,7 +29,7 @@ class Ninja {
   static Future<Mood?> getMood(String text) async {
     try {
       var r = await http.get(getEndPoint("sentiment?text=$text"), headers: {
-        'X-Api-Key': ApiKeys.ninja,
+        'X-Api-Key': "Uo6DyVrhfSYiiqWtDXpF9BpBdu657qMhEyVlPFOO",
       });
       return Mood.fromJson(jsonDecode(r.body));
     } catch (e) {
@@ -51,7 +49,7 @@ class Ninja {
       var q = http.MultipartRequest("POST", getEndPoint("facedetect"));
 
       q.files.add(file);
-      q.headers['X-Api-Key'] = ApiKeys.ninja;
+      q.headers['X-Api-Key'] = "Uo6DyVrhfSYiiqWtDXpF9BpBdu657qMhEyVlPFOO";
 
       var r = await q.send();
       var rString = await r.stream.bytesToString();
@@ -75,7 +73,7 @@ class Ninja {
       var q = http.MultipartRequest("POST", getEndPoint("objectdetection"));
 
       q.files.add(file);
-      q.headers['X-Api-Key'] = ApiKeys.ninja;
+      q.headers['X-Api-Key'] = "Uo6DyVrhfSYiiqWtDXpF9BpBdu657qMhEyVlPFOO";
 
       var r = await q.send();
       var rString = await r.stream.bytesToString();
@@ -97,7 +95,7 @@ class Ninja {
     try {
       String enName = (await name.translate(to: "en")).text;
       var r = await http.get(getEndPoint("dogs?name=$enName"), headers: {
-        'X-Api-Key': ApiKeys.ninja,
+        'X-Api-Key': "Uo6DyVrhfSYiiqWtDXpF9BpBdu657qMhEyVlPFOO",
       });
       return List.from(jsonDecode(r.body)).map((e) => Dog.fromJson(e)).toList();
     } catch (e) {

@@ -5,8 +5,6 @@ import 'package:http/http.dart' as http;
 import 'package:intellibox/utils/logic.dart';
 import 'package:translator/translator.dart';
 
-import '../../.env/keys.dart';
-
 class HuggingFace {
   static const modelsUrl = "https://api-inference.huggingface.co/models/";
 
@@ -40,7 +38,7 @@ class HuggingFace {
 
   Map<String, String> get _getHds {
     return {
-      'Authorization': "Bearer ${ApiKeys.huggingFace}",
+      'Authorization': "Bearer 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 ",
       "Accept": "*/*",
       "Content-Type": "application/json",
     };
@@ -53,7 +51,7 @@ class HuggingFace {
 
       // Prepare the request headers and payload
       Map<String, String> headers = {
-        'Authorization': 'Bearer ${ApiKeys.huggingFace}',
+        'Authorization': 'Bearer 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 ',
         'Content-Type': 'application/octet-stream',
       };
       var apiUrl =
