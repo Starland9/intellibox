@@ -50,4 +50,28 @@ class Dog {
 
   factory Dog.fromJson(Map<String, dynamic> json) => _$DogFromJson(json);
   Map<String, dynamic> toJson() => _$DogToJson(this);
+
+  String get friendlyText {
+    return '''
+      Salut! Je suis $name, et voici quelques informations sur moi:
+      - J'adore jouer avec des enfants: $goodWithChildren
+      - J'aime aussi passer du temps avec d'autres chiens: $goodWithOtherDogs
+      - Mon niveau de perte de poil est: $shedding
+      - J'ai besoin de beaucoup de toilettage: $grooming
+      - Je bave un peu: $drooling
+      - La longueur de mon pelage est: $coatLength
+      - Je suis bon avec les étrangers: $goodWithStrangers
+      - J'aime m'amuser: $playfulness
+      - Je suis protecteur: $protectiveness
+      - Je suis facile à entraîner: $trainability
+      - J'ai beaucoup d'énergie: $energy
+      - Je n'aboie pas beaucoup: $barking
+      - Mon espérance de vie minimale est: $minLifeExpectancy
+      - Mon espérance de vie maximale est: $maxLifeExpectancy
+      - Ma taille maximale (mâle) est: $maxHeightMale
+      - Ma taille maximale (femelle) est: $maxHeightFemale
+      - Mon poids maximal (mâle) est: $maxWeightMale
+      - Mon poids maximal (femelle) est: $maxWeightFemale
+    ''';
+  }
 }

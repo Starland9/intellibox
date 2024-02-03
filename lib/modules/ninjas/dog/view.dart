@@ -17,12 +17,8 @@ class DogView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network(
-            dog.imageLink,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
+          Image.network(dog.imageLink),
+          const SizedBox(height: 10),
           Text(
             dog.name,
             style: const TextStyle(
@@ -30,9 +26,7 @@ class DogView extends StatelessWidget {
               fontSize: 20,
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           _buildProgress(
               "Compatibilité avec les enfants", dog.goodWithChildren),
           _buildProgress(
@@ -89,13 +83,13 @@ class DogPage extends StatefulWidget {
 
 class _DogPageState extends State<DogPage> {
   Dog? dog;
-  String search = "dog";
+  final _searchController = TextEditingController(text: "dog");
   Future<List<Dog>?>? _getDog;
   List<Dog>? dogList;
 
   @override
   void initState() {
-    _getDog = Ninja.getDog(search);
+    _getDog = Ninja.getDog(_searchController.text);
     super.initState();
   }
 
@@ -107,22 +101,7 @@ class _DogPageState extends State<DogPage> {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: CupertinoSearchTextField(
-              placeholder: "Rechercher un chien",
-              prefixIcon: const Icon(Icons.search),
-              suffixIcon: const Icon(Icons.close),
-              backgroundColor: Scolors.primary,
-              onSubmitted: (value) {
-                _refreshDog(value);
-              },
-              onChanged: (value) {
-                Ninja.getDog(value).then((value) {
-                  setState(() {
-                    dogList = value;
-                  });
-                });
-              },
-            ),
+            child: _buildSearchField(),
           ),
           if (dogList != null && dogList!.isNotEmpty)
             SizedBox(
@@ -162,10 +141,11 @@ class _DogPageState extends State<DogPage> {
                   }
 
                   return const Center(
-                      child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: CircularProgressIndicator(),
-                  ));
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
                 },
               ),
             ),
@@ -175,10 +155,41 @@ class _DogPageState extends State<DogPage> {
     );
   }
 
+  CupertinoSearchTextField _buildSearchField() {
+    return CupertinoSearchTextField(
+      controller: _searchController,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.grey,
+        ),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      placeholder: "Rechercher un chien",
+      prefixIcon: const Icon(Icons.search),
+      suffixIcon: const Icon(Icons.send),
+      onSuffixTap: (() => {
+            setState(() {
+              _refreshDog(_searchController.text);
+              dogList?.clear();
+            })
+          }),
+      style: const TextStyle(color: Colors.white),
+      onSubmitted: (value) {
+        _refreshDog(value);
+      },
+      // onChanged: (value) {
+      // Ninja.getDog(value).then((value) {
+      //   setState(() {
+      //     dogList = value;
+      //   });
+      // });
+      // },
+    );
+  }
+
   void _refreshDog(String value) {
     setState(() {
-      search = value;
-      _getDog = Ninja.getDog(search);
+      _getDog = Ninja.getDog(_searchController.text);
     });
   }
 }
