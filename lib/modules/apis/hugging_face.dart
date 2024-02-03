@@ -65,14 +65,12 @@ class HuggingFace {
       );
 
       if (response.statusCode == 200) {
-        print(response.body);
         String text = jsonDecode(response.body)[0]["generated_text"];
         return await tr(text);
       } else {
         return 'Request failed with status code ${response.statusCode}';
       }
     } catch (e) {
-      print(e);
       return null;
     }
   }

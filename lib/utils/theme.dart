@@ -1,27 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Scolors {
   static Color primary = Colors.white70;
-  static Color bgColor = const Color.fromARGB(255, 23, 25, 27);
+  static Color bgColor = const Color.fromARGB(255, 27, 32, 36);
+  static Color fieldFillColor = const Color.fromARGB(255, 29, 28, 28);
 }
 
 class STheme {
   static ThemeData normal = ThemeData(
-    textTheme: GoogleFonts.aBeeZeeTextTheme().copyWith(
-        bodyMedium: TextStyle(
-      color: Scolors.primary,
-    )),
     colorSchemeSeed: Scolors.primary,
     useMaterial3: true,
-    scaffoldBackgroundColor: Scolors.bgColor,
-    appBarTheme: AppBarTheme(
-      color: Scolors.bgColor,
-      foregroundColor: Scolors.primary,
+    // scaffoldBackgroundColor: Scolors.bgColor,
+    brightness: Brightness.dark,
+    appBarTheme: const AppBarTheme(
       centerTitle: true,
-      titleTextStyle: GoogleFonts.aBeeZee(
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
+    ),
+    inputDecorationTheme: const InputDecorationTheme(
+      border: OutlineInputBorder(borderSide: BorderSide.none),
+      contentPadding: EdgeInsets.all(8),
+      filled: true,
+      fillColor: Color.fromARGB(255, 44, 43, 43),
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(
+        shape: ContinuousRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
       ),
     ),
   );
