@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:intellibox/modules/huggingFace/bot/intellibot_page.dart';
 import 'package:intellibox/modules/huggingFace/text_to_image/stable_diffusion/view.dart';
 import 'package:intellibox/utils/assets.dart';
 
@@ -10,7 +11,6 @@ import '../modules/ninjas/detectors/visage_detect/view.dart';
 import '../modules/ninjas/devinette/view.dart';
 import '../modules/ninjas/dog/view.dart';
 import '../modules/ninjas/mood/view.dart';
-
 
 class AppStore {
   static List<Tool> tools = [
@@ -68,6 +68,14 @@ class AppStore {
       ToolCategory.divertissement,
       SImages.answerImageLogo,
       ImageAnswer(),
+    ),
+    //
+    Tool(
+      "IntelliBot",
+      "",
+      ToolCategory.ia,
+      SImages.answerImageLogo,
+      IntelliBotPage(),
     ),
   ];
 
