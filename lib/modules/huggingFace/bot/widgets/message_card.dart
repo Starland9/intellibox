@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:gif_view/gif_view.dart';
 import 'package:intellibox/models/bot_message.dart';
 import 'package:intellibox/utils/assets.dart';
@@ -84,7 +83,7 @@ class MessageCard extends StatelessWidget {
     );
   }
 
-  void _sayText() {
-    FlutterTts().speak(message.text);
-  }
+  // void _sayText() {
+  //   FlutterTts().speak(message.text);
+  // }
 }
