@@ -74,7 +74,7 @@ class AppStore {
       "IntelliBot",
       "",
       ToolCategory.ia,
-      SImages.answerImageLogo,
+      SImages.botImageLogo,
       IntelliBotPage(),
     ),
   ];
