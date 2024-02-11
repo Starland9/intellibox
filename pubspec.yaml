@@ -28,6 +28,10 @@ dependencies:
   loader_overlay: ^2.2.0
   translator: ^0.1.7
   fluttertoast:
+  flutter_markdown: ^0.6.18+3
+  markdown: ^7.2.1
+  gif_view: ^0.3.1
+  flutter_tts: ^3.8.5
 
 dev_dependencies:
   flutter_test:
@@ -41,4 +45,6 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/gifs/
+
     - .env

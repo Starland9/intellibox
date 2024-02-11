@@ -10,5 +10,7 @@ class SImages {
   static String answerImageLogo = "assets/images/image.png";
   static String botImageLogo = "assets/images/bot.png";
 
+  static String writingGif = "assets/gifs/writing.gif";
+
   static String busyLogo = "assets/images/tired.png";
 }

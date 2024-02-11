@@ -4,12 +4,7 @@ import 'package:intellibox/modules/huggingFace/bot/widgets/message_card.dart';
 
 import '../../../models/bot_message.dart';
 
-final List<BotMessage> messages = [
-  BotMessage(isMeASender: true, text: "Salut"),
-  BotMessage(isMeASender: false, text: "Salut, commentr puis je taider ?"),
-  BotMessage(isMeASender: true, text: "Je ne sais pas encore"),
-  BotMessage(isMeASender: false, text: "Ok"),
-];
+final List<BotMessage> messages = [];
 
 class IntelliBotPage extends StatefulWidget {
   const IntelliBotPage({super.key});
@@ -51,10 +46,15 @@ class _IntelliBotPageState extends State<IntelliBotPage> {
             physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
+                ...messages.map((e) => MessageCard(message: e)),
                 ...[
                   if (_gptWrintig)
                     MessageCard(
-                      message: BotMessage(isMeASender: false, text: "..."),
+                      message: BotMessage(
+                        isMeASender: false,
+                        text: "...",
+                      ),
+                      iswriting: true,
                     ),
                   const SizedBox(height: 32)
                 ]
@@ -71,6 +71,10 @@ class _IntelliBotPageState extends State<IntelliBotPage> {
                 decoration: const InputDecoration.collapsed(
                   hintText: "Entre ton message",
                 ),
+                minLines: 1,
+                maxLines: 5,
+                contentInsertionConfiguration: ContentInsertionConfiguration(
+                    onContentInserted: _onContentInserted),
               ),
             ),
             IconButton.filledTonal(
@@ -100,10 +104,15 @@ class _IntelliBotPageState extends State<IntelliBotPage> {
   }
 
   void _getGptResponse(String text) {
+    _jumpToBottom();
+    String rep =
+        "Voici l'historique de notre conversation : \n${_getConversation()}\n";
+    rep += "Maintenant voici mon prochain message : '$text'. reponds moi";
+
     setState(() {
       _gptWrintig = true;
     });
-    GPT.getResponse(text).then((value) {
+    GPT.getResponse(rep).then((value) {
       setState(() {
         _gptWrintig = false;
       });
@@ -114,10 +123,32 @@ class _IntelliBotPageState extends State<IntelliBotPage> {
       });
       _sendMessage(false, error.toString());
     });
+    _jumpToBottom();
+  }
+
+  String _getConversation() {
+    String text = "";
+    for (var message in messages) {
+      text += message.toGpt();
+    }
+    return text;
   }
 
   void _jumpToBottom() {
     _scrollController.animateTo(_scrollController.position.maxScrollExtent,
         duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+  }
+
+  void _onContentInserted(KeyboardInsertedContent value) {
+    if (!value.hasData) {
+      return;
+    }
+    if (value.mimeType.contains("image")) {
+      showModalBottomSheet(
+        showDragHandle: true,
+        context: context,
+        builder: (context) => Image.memory(value.data!),
+      );
+    }
   }
 }
