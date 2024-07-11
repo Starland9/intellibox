@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:intellibox/modules/home/screens/home.dart';
-import 'package:intellibox/utils/theme.dart';
+import 'package:intellibox/src/modules/home/screens/home.dart';
+import 'package:intellibox/src/utils/theme.dart';
 
 // import 'firebase_options.dart';
 
@@ -23,7 +23,6 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: STheme.normal,
-    
       home: HomePage(),
     );
   }

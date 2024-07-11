@@ -4,42 +4,43 @@ publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: ">=2.19.6 <3.0.0"
+  sdk: ">=3.4.0 <4.0.0"
 
 dependencies:
   advance_animated_progress_indicator: ^0.0.1
   animate_do: ^3.0.2
   async_button_builder: ^3.0.0+1
-  auth_buttons: ^1.0.1+4
+  auth_buttons: ^3.0.3
   awesome_dialog: ^3.0.2
-  build_runner: ^2.3.3
-  cloud_firestore: ^4.5.2
-  firebase_auth: ^4.4.2
-  firebase_core: ^2.10.0
+  cloud_firestore: ^5.0.2
+  firebase_auth: ^5.1.1
+  firebase_core: ^3.1.1
   flutter:
     sdk: flutter
-  getwidget: ^3.1.1
-  google_fonts: ^4.0.3
+  getwidget: ^4.0.0
+  google_fonts: ^6.2.1
   google_sign_in: ^6.1.0
-  http: ^0.13.5
+  http: ^1.2.1
   image_gallery_saver: ^2.0.3
-  image_picker: ^0.8.7+4
+  image_picker: ^1.1.2
   json_annotation: ^4.8.0
-  loader_overlay: ^2.2.0
-  translator: ^0.1.7
+  loader_overlay: ^4.0.0
+  translator: ^1.0.0
   fluttertoast:
-  flutter_markdown: ^0.6.18+3
+  flutter_markdown: ^0.7.3
   markdown: ^7.2.1
-  gif_view: ^0.3.1
-  flutter_tts: ^3.8.5
+  gif_view: ^0.4.4
+  flutter_tts: ^4.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^4.0.0
   json_serializable: ^6.6.1
-  rename: ^2.1.1
+  rename: ^3.0.2
   flutter_launcher_icons: ^0.13.1
+  build_runner: ^2.3.3
+
 
 flutter_launcher_icons:
   android: "launcher_icon"
