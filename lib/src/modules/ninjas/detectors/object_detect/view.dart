@@ -1,16 +1,14 @@
 import 'dart:io';
 
-import 'package:advance_animated_progress_indicator/advance_animated_progress_indicator.dart';
 import 'package:async_button_builder/async_button_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intellibox/src/modules/apis/ninja.dart';
-import 'package:intellibox/src/widgets/btns.dart';
+import 'package:intellibox_v2/src/modules/apis/ninja.dart';
+import 'package:intellibox_v2/src/widgets/btns.dart';
 
 import '../../../../utils/theme.dart';
 import '../visage_detect/model.dart';
 import 'model.dart';
-
 
 class ObjectDetect extends StatefulWidget {
   const ObjectDetect({super.key});
@@ -97,7 +95,7 @@ class _ObjectDetectState extends State<ObjectDetect> {
     );
   }
 
-  AnimatedLinearProgressIndicator _buildProgress(String title, double percent) {
+  Widget _buildProgress(String title, double percent) {
     Color c = Scolors.primary;
 
     percent < 30
@@ -105,15 +103,8 @@ class _ObjectDetectState extends State<ObjectDetect> {
         : percent < 60 && percent >= 30
             ? c = Colors.orange
             : c = Colors.green;
-    return AnimatedLinearProgressIndicator(
-      labelStyle: TextStyle(
-        color: c,
-      ),
-      percentageTextStyle: TextStyle(color: c),
-      indicatorColor: c,
-      indicatorBackgroundColor: Scolors.primary.withOpacity(0.2),
-      percentage: percent / 100,
-      label: title,
+    return CircularProgressIndicator.adaptive(
+      value: percent / 100,
     );
   }
 

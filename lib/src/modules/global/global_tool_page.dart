@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:intellibox/src/models/tool/tool.dart';
+import 'package:intellibox_v2/src/models/tool/tool.dart';
 
 class GlobalToolPage extends StatelessWidget {
   const GlobalToolPage({super.key, required this.tool});

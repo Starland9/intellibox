@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'package:intellibox/src/utils/logic.dart';
+import 'package:intellibox_v2/src/utils/logic.dart';
 import 'package:translator/translator.dart';
 
 class HuggingFace {
@@ -16,7 +16,7 @@ class HuggingFace {
     try {
       String translated = (await text.translate()).text;
       var r = await http.post(
-        _getModel(model ?? "stabilityai/stable-diffusion-2-1"),
+        _getModel(model ?? "stabilityai/stable-diffusion-3.5-large"),
         headers: _getHds,
         body: jsonEncode(translated),
       );
@@ -26,7 +26,7 @@ class HuggingFace {
           if (model != null) {
             return "Notre robot est actuellement indisponible, veuillez reessayer dans environ ${m['estimated_time']} minutes";
           }
-          return generateImage(text, "runwayml/stable-diffusion-v1-5");
+          return generateImage(text, "runwayml/stable-diffusion-3.5-medium");
         }
       } catch (e) {
         return r.bodyBytes;
@@ -55,7 +55,7 @@ class HuggingFace {
         'Content-Type': 'application/octet-stream',
       };
       var apiUrl =
-          HuggingFace()._getModel("nlpconnect/vit-gpt2-image-captioning");
+          HuggingFace()._getModel("Salesforce/blip-image-captioning-large");
 
       // Make the POST request
       http.Response response = await http.post(

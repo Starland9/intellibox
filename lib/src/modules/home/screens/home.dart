@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/card/gf_card.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intellibox/src/models/tool/tool.dart';
-import 'package:intellibox/src/modules/global/global_tool_page.dart';
-import 'package:intellibox/src/utils/logic.dart';
-import 'package:intellibox/src/utils/store.dart';
+import 'package:intellibox_v2/src/models/tool/tool.dart';
+import 'package:intellibox_v2/src/modules/global/global_tool_page.dart';
+import 'package:intellibox_v2/src/utils/logic.dart';
+import 'package:intellibox_v2/src/utils/store.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

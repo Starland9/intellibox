@@ -1,5 +1,5 @@
 // Create a json serializable class from this data
-import 'package:intellibox/src/utils/logic.dart';
+import 'package:intellibox_v2/src/utils/logic.dart';
 
 class AnObject {
   String? label;

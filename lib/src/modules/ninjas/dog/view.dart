@@ -1,8 +1,6 @@
-import 'package:advance_animated_progress_indicator/advance_animated_progress_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intellibox/src/modules/apis/ninja.dart';
-import 'package:intellibox/src/utils/theme.dart';
+import 'package:intellibox_v2/src/modules/apis/ninja.dart';
 
 import 'model.dart';
 
@@ -53,23 +51,9 @@ class DogView extends StatelessWidget {
     );
   }
 
-  AnimatedLinearProgressIndicator _buildProgress(String title, double percent) {
-    Color c = Scolors.primary;
-
-    percent < 30
-        ? c = Colors.blue
-        : percent < 60 && percent >= 30
-            ? c = Colors.orange
-            : c = Colors.green;
-    return AnimatedLinearProgressIndicator(
-      labelStyle: TextStyle(
-        color: c,
-      ),
-      percentageTextStyle: TextStyle(color: c),
-      indicatorColor: c,
-      indicatorBackgroundColor: Scolors.primary.withOpacity(0.2),
-      percentage: percent / 100,
-      label: title,
+  Widget _buildProgress(String title, double percent) {
+    return CircularProgressIndicator.adaptive(
+      value: percent / 100,
     );
   }
 }
@@ -131,13 +115,14 @@ class _DogPageState extends State<DogPage> {
               child: FutureBuilder(
                 future: _getDog,
                 builder: (context, snapshot) {
-                  if (snapshot.hasData && snapshot.data != null) {
-                    dog = snapshot.data![0];
-                    return DogView(dog: dog!);
-                  }
                   if (snapshot.hasData &&
                       (snapshot.data == null || snapshot.data!.isEmpty)) {
                     return const Center(child: Text("Aucun chien trouvé"));
+                  }
+
+                  if (snapshot.hasData && snapshot.data != null) {
+                    dog = snapshot.data![0];
+                    return DogView(dog: dog!);
                   }
 
                   return const Center(

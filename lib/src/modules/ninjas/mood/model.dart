@@ -1,6 +1,6 @@
-
-import 'package:intellibox/src/utils/logic.dart';
+import 'package:intellibox_v2/src/utils/logic.dart';
 import 'package:json_annotation/json_annotation.dart';
+
 part 'model.g.dart';
 
 @JsonSerializable()
@@ -24,8 +24,4 @@ class Mood {
         text: await tr(mood.text),
         sentiment: await tr(mood.sentiment));
   }
-
-
-
- 
 }

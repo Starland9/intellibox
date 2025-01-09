@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intellibox/src/utils/store.dart';
+import 'package:intellibox_v2/src/utils/store.dart';
 import 'package:translator/translator.dart';
 
 class Nav {

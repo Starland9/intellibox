@@ -1,7 +1,7 @@
 import 'package:async_button_builder/async_button_builder.dart';
 import 'package:flutter/material.dart';
-import 'package:intellibox/src/modules/apis/ninja.dart';
-import 'package:intellibox/src/utils/theme.dart';
+import 'package:intellibox_v2/src/modules/apis/ninja.dart';
+import 'package:intellibox_v2/src/utils/theme.dart';
 import 'package:translator/translator.dart';
 
 import '../../../widgets/btns.dart';
@@ -43,7 +43,7 @@ class _MoodPageState extends State<MoodPage> {
               decoration: InputDecoration(
                 hintText: "J'ai faim... blabla..",
                 border: const OutlineInputBorder(),
-                fillColor: Scolors.primary.withOpacity(0.6),
+                fillColor: Scolors.primary.withValues(alpha: 0.6),
                 filled: true,
               ),
               minLines: 4,

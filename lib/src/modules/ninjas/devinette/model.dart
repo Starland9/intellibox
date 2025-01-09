@@ -1,7 +1,5 @@
-
-import 'package:intellibox/src/utils/logic.dart';
+import 'package:intellibox_v2/src/utils/logic.dart';
 import 'package:json_annotation/json_annotation.dart';
-
 
 part 'model.g.dart';
 
@@ -24,6 +22,4 @@ class Devinette {
       await tr(d.answer),
     );
   }
-
-
 }

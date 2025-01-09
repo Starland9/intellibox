@@ -4,9 +4,9 @@ import 'package:animate_do/animate_do.dart';
 import 'package:async_button_builder/async_button_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
-import 'package:intellibox/src/modules/apis/hugging_face.dart';
-import 'package:intellibox/src/utils/assets.dart';
+import 'package:intellibox_v2/src/modules/apis/hugging_face.dart';
+import 'package:intellibox_v2/src/utils/assets.dart';
+import 'package:saver_gallery/saver_gallery.dart';
 
 class ImageGen1 extends StatefulWidget {
   const ImageGen1({super.key});
@@ -53,8 +53,8 @@ class _ImageGen1State extends State<ImageGen1> {
     );
   }
 
-  GestureDetector _buildImageClickable(BuildContext context) {
-    return GestureDetector(
+  InkWell _buildImageClickable(BuildContext context) {
+    return InkWell(
       onTap: () {
         showDialog(
           context: context,
@@ -143,25 +143,33 @@ class _ImageGen1State extends State<ImageGen1> {
   }
 
   Widget _buildError() {
-    return Column(
-      children: [
-        Text(
-          error!,
-          style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(height: 12),
-        Expanded(
-          child: Image.asset(SImages.busyLogo),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Text(
+            error!,
+            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 12),
+          Image.asset(SImages.busyLogo),
+        ],
+      ),
     );
   }
 
   void _saveImage() async {
     final fileName =
         'intellibox_image_gen${DateTime.now().millisecondsSinceEpoch}';
-    ImageGallerySaver.saveImage(imageBytes!, quality: 100, name: fileName);
+
+    await SaverGallery.saveImage(
+      imageBytes!,
+      quality: 100,
+      fileName: fileName,
+      skipIfExists: true,
+    );
+
     Fluttertoast.showToast(msg: "Image saved to gallery as $fileName");
   }
 }

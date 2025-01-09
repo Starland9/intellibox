@@ -3,11 +3,10 @@
 import 'package:async_button_builder/async_button_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intellibox/src/modules/apis/ninja.dart';
+import 'package:intellibox_v2/src/modules/apis/ninja.dart';
 
 import '../../../widgets/btns.dart';
 import 'model.dart';
-
 
 class DevinettePage extends StatefulWidget {
   const DevinettePage({super.key});
@@ -99,5 +98,3 @@ class _DevinettePageState extends State<DevinettePage> {
     }
   }
 }
-
-

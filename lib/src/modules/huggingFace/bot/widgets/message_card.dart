@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:gif_view/gif_view.dart';
-import 'package:intellibox/src/models/bot_message.dart';
-import 'package:intellibox/src/utils/assets.dart';
+import 'package:intellibox_v2/src/models/bot_message.dart';
+import 'package:intellibox_v2/src/utils/assets.dart';
 import 'package:markdown/markdown.dart' as md;
 
 class MessageCard extends StatelessWidget {

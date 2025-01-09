@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:intellibox/src/modules/home/screens/home.dart';
-import 'package:intellibox/src/utils/theme.dart';
+import 'package:intellibox_v2/src/modules/home/screens/home.dart';
+import 'package:intellibox_v2/src/utils/theme.dart';
 
 // import 'firebase_options.dart';
 

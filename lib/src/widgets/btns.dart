@@ -23,7 +23,7 @@ class MainButton extends StatelessWidget {
       onPressed: onPressed,
       text: text,
       color: Scolors.primary,
-      splashColor: Scolors.bgColor.withOpacity(0.5),
+      splashColor: Scolors.bgColor.withValues(alpha: 0.5),
       textStyle: GoogleFonts.aBeeZee(
         fontSize: 18,
         fontWeight: FontWeight.bold,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intellibox/src/modules/apis/gpt.dart';
-import 'package:intellibox/src/modules/huggingFace/bot/widgets/message_card.dart';
+import 'package:intellibox_v2/src/modules/apis/gpt.dart';
+import 'package:intellibox_v2/src/modules/huggingFace/bot/widgets/message_card.dart';
 
 import '../../../models/bot_message.dart';
 
@@ -56,8 +56,8 @@ class _IntelliBotPageState extends State<IntelliBotPage> {
                       ),
                       iswriting: true,
                     ),
-                  const SizedBox(height: 32)
-                ]
+                ],
+                const SizedBox(height: 32)
               ],
             ),
           ),
@@ -74,7 +74,8 @@ class _IntelliBotPageState extends State<IntelliBotPage> {
                 minLines: 1,
                 maxLines: 5,
                 contentInsertionConfiguration: ContentInsertionConfiguration(
-                    onContentInserted: _onContentInserted),
+                  onContentInserted: _onContentInserted,
+                ),
               ),
             ),
             IconButton.filledTonal(
@@ -112,16 +113,18 @@ class _IntelliBotPageState extends State<IntelliBotPage> {
     setState(() {
       _gptWrintig = true;
     });
-    GPT.getResponse(rep).then((value) {
+    GPT.getHuggingFaceResponse(rep).then((value) {
       setState(() {
         _gptWrintig = false;
       });
       _sendMessage(false, value);
+      _jumpToBottom();
     }).onError((error, stackTrace) {
       setState(() {
         _gptWrintig = false;
       });
       _sendMessage(false, error.toString());
+      _jumpToBottom();
     });
     _jumpToBottom();
   }

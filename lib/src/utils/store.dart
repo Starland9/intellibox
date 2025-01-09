@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:intellibox/src/modules/huggingFace/bot/intellibot_page.dart';
-import 'package:intellibox/src/modules/huggingFace/text_to_image/stable_diffusion/view.dart';
-import 'package:intellibox/src/utils/assets.dart';
+import 'package:intellibox_v2/src/modules/huggingFace/bot/intellibot_page.dart';
+import 'package:intellibox_v2/src/modules/huggingFace/text_to_image/stable_diffusion/view.dart';
+import 'package:intellibox_v2/src/utils/assets.dart';
 
 import '../models/tool/tool.dart';
 import '../modules/huggingFace/image_answer/view.dart';

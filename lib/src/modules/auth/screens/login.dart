@@ -4,11 +4,11 @@ import 'package:animate_do/animate_do.dart';
 import 'package:auth_buttons/auth_buttons.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:intellibox/src/modules/auth/services/auth.dart';
-import 'package:intellibox/src/modules/home/screens/home.dart';
-import 'package:intellibox/src/utils/assets.dart';
-import 'package:intellibox/src/utils/logic.dart';
-import 'package:intellibox/src/utils/theme.dart';
+import 'package:intellibox_v2/src/modules/auth/services/auth.dart';
+import 'package:intellibox_v2/src/modules/home/screens/home.dart';
+import 'package:intellibox_v2/src/utils/assets.dart';
+import 'package:intellibox_v2/src/utils/logic.dart';
+import 'package:intellibox_v2/src/utils/theme.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

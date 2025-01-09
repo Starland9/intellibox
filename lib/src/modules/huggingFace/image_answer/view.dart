@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intellibox/src/modules/apis/hugging_face.dart';
-import 'package:intellibox/src/widgets/btns.dart';
+import 'package:intellibox_v2/src/modules/apis/hugging_face.dart';
+import 'package:intellibox_v2/src/widgets/btns.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 class ImageAnswer extends StatefulWidget {
