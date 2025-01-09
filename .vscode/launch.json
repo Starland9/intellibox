@@ -10,8 +10,8 @@
             "type": "dart",
             "flutterMode": "debug",
             "args": [
-                "dart-define-from-file",
-                ".env"
+                "--dart-define-from-file",
+                "env.json"
             ]
         },
         {
