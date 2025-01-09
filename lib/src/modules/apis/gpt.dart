@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:intellibox_v2/src/core/env.dart';
 
 class GPT {
   static Future<String> getResponse(String ask) async {
@@ -24,7 +25,7 @@ class GPT {
           'https://api-inference.huggingface.co/models/Qwen/Qwen2.5-Coder-32B-Instruct/v1/chat/completions';
 
       final headers = {
-        'Authorization': 'Bearer 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',
+        'Authorization': 'Bearer ${Env.huggingFaceApiKey}',
         'Content-Type': 'application/json'
       };
       final data = {

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
+import 'package:intellibox_v2/src/core/env.dart';
 import 'package:intellibox_v2/src/utils/logic.dart';
 import 'package:translator/translator.dart';
 
@@ -38,7 +39,7 @@ class HuggingFace {
 
   Map<String, String> get _getHds {
     return {
-      'Authorization': "Bearer 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 ",
+      'Authorization': "Bearer ${Env.huggingFaceApiKey} ",
       "Accept": "*/*",
       "Content-Type": "application/json",
     };
@@ -51,7 +52,7 @@ class HuggingFace {
 
       // Prepare the request headers and payload
       Map<String, String> headers = {
-        'Authorization': 'Bearer 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 ',
+        'Authorization': 'Bearer ${Env.huggingFaceApiKey} ',
         'Content-Type': 'application/octet-stream',
       };
       var apiUrl =
