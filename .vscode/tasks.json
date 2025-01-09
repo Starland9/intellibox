@@ -1,0 +1,19 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "flutter",
+			"command": "flutter",
+			"args": [
+				"build",
+				"apk",
+				"dart-define-from-file",
+				".env"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"label": "flutter: flutter build apk with env",
+			"detail": ""
+		}
+	]
+}

@@ -103,8 +103,9 @@ class _ObjectDetectState extends State<ObjectDetect> {
         : percent < 60 && percent >= 30
             ? c = Colors.orange
             : c = Colors.green;
-    return CircularProgressIndicator.adaptive(
+    return LinearProgressIndicator(
       value: percent / 100,
+      color: c,
     );
   }
 

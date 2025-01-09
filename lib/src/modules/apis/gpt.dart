@@ -43,6 +43,8 @@ class GPT {
         body: jsonEncode(data),
       );
 
+      print(response.body);
+
       final text = jsonDecode(utf8.decode(response.body.codeUnits))['choices']
           [0]['message']['content'];
 

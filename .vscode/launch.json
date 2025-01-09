@@ -7,7 +7,12 @@
         {
             "name": "intellibox",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "dart-define-from-file",
+                ".env"
+            ]
         },
         {
             "name": "intellibox (profile mode)",

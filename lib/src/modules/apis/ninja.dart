@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
+import 'package:intellibox_v2/src/core/env.dart';
 import 'package:translator/translator.dart';
 
 import '../../utils/logic.dart';
@@ -17,7 +18,7 @@ class Ninja {
     try {
       var r = await http.get(getEndPoint("riddles"), headers: {
         if (limit != null) "limit": limit.toString(),
-        'X-Api-Key': "Uo6DyVrhfSYiiqWtDXpF9BpBdu657qMhEyVlPFOO",
+        'X-Api-Key': Env.ninjaApiKey,
       });
 
       return Devinette.fromJson(jsonDecode(r.body)[0]);
@@ -29,7 +30,7 @@ class Ninja {
   static Future<Mood?> getMood(String text) async {
     try {
       var r = await http.get(getEndPoint("sentiment?text=$text"), headers: {
-        'X-Api-Key': "Uo6DyVrhfSYiiqWtDXpF9BpBdu657qMhEyVlPFOO",
+        'X-Api-Key': Env.ninjaApiKey,
       });
       return Mood.fromJson(jsonDecode(r.body));
     } catch (e) {
@@ -49,7 +50,7 @@ class Ninja {
       var q = http.MultipartRequest("POST", getEndPoint("facedetect"));
 
       q.files.add(file);
-      q.headers['X-Api-Key'] = "Uo6DyVrhfSYiiqWtDXpF9BpBdu657qMhEyVlPFOO";
+      q.headers['X-Api-Key'] = Env.ninjaApiKey;
 
       var r = await q.send();
       var rString = await r.stream.bytesToString();
@@ -73,7 +74,7 @@ class Ninja {
       var q = http.MultipartRequest("POST", getEndPoint("objectdetection"));
 
       q.files.add(file);
-      q.headers['X-Api-Key'] = "Uo6DyVrhfSYiiqWtDXpF9BpBdu657qMhEyVlPFOO";
+      q.headers['X-Api-Key'] = Env.ninjaApiKey;
 
       var r = await q.send();
       var rString = await r.stream.bytesToString();
@@ -95,7 +96,7 @@ class Ninja {
     try {
       String enName = (await name.translate(to: "en")).text;
       var r = await http.get(getEndPoint("dogs?name=$enName"), headers: {
-        'X-Api-Key': "Uo6DyVrhfSYiiqWtDXpF9BpBdu657qMhEyVlPFOO",
+        'X-Api-Key': Env.ninjaApiKey,
       });
       return List.from(jsonDecode(r.body)).map((e) => Dog.fromJson(e)).toList();
     } catch (e) {
