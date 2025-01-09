@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intellibox_v2/src/modules/apis/ninja.dart';
+import 'package:intellibox_v2/src/utils/widgets.dart';
 
 import 'model.dart';
 
@@ -25,35 +26,29 @@ class DogView extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          _buildProgress(
+          WidgetUtils.buildProgress(
               "Compatibilité avec les enfants", dog.goodWithChildren),
-          _buildProgress(
+          WidgetUtils.buildProgress(
               "Compatibilité avec les autres chiens", dog.goodWithOtherDogs),
-          _buildProgress("Perte des poils/cheveux/plumes", dog.shedding),
-          _buildProgress("Harcèlement", dog.grooming),
-          _buildProgress("Bavage", dog.drooling),
-          _buildProgress("Longueur du pelage", dog.coatLength),
-          _buildProgress(
+          WidgetUtils.buildProgress("Perte des poils/cheveux/plumes", dog.shedding),
+          WidgetUtils.buildProgress("Harcèlement", dog.grooming),
+          WidgetUtils.buildProgress("Bavage", dog.drooling),
+          WidgetUtils.buildProgress("Longueur du pelage", dog.coatLength),
+          WidgetUtils.buildProgress(
               "Comportement envers les étrangers", dog.goodWithStrangers),
-          _buildProgress("Jouabilité", dog.playfulness),
-          _buildProgress("Protection", dog.protectiveness),
-          _buildProgress("Facilité de dressage", dog.trainability),
-          _buildProgress("Niveau d'énergie", dog.energy),
-          _buildProgress("Aboiement", dog.barking),
-          _buildProgress("Durée de vie minimale", dog.minLifeExpectancy),
-          _buildProgress("Durée de vie maximale", dog.maxLifeExpectancy),
-          _buildProgress("Hauteur maximale (mâle)", dog.maxHeightMale),
-          _buildProgress("Hauteur maximale (femelle)", dog.maxHeightFemale),
-          _buildProgress("Poids maximal (mâle)", dog.maxWeightMale),
-          _buildProgress("Poids maximal (femelle)", dog.maxWeightFemale),
+          WidgetUtils.buildProgress("Jouabilité", dog.playfulness),
+          WidgetUtils.buildProgress("Protection", dog.protectiveness),
+          WidgetUtils.buildProgress("Facilité de dressage", dog.trainability),
+          WidgetUtils.buildProgress("Niveau d'énergie", dog.energy),
+          WidgetUtils.buildProgress("Aboiement", dog.barking),
+          WidgetUtils.buildProgress("Durée de vie minimale", dog.minLifeExpectancy),
+          WidgetUtils.buildProgress("Durée de vie maximale", dog.maxLifeExpectancy),
+          WidgetUtils.buildProgress("Hauteur maximale (mâle)", dog.maxHeightMale),
+          WidgetUtils.buildProgress("Hauteur maximale (femelle)", dog.maxHeightFemale),
+          WidgetUtils.buildProgress("Poids maximal (mâle)", dog.maxWeightMale),
+          WidgetUtils.buildProgress("Poids maximal (femelle)", dog.maxWeightFemale),
         ],
       ),
-    );
-  }
-
-  Widget _buildProgress(String title, double percent) {
-    return CircularProgressIndicator.adaptive(
-      value: percent / 100,
     );
   }
 }
