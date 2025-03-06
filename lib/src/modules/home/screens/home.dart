@@ -29,7 +29,11 @@ class HomePage extends StatelessWidget {
               child: GridView.count(
                 shrinkWrap: true,
                 crossAxisCount: 3,
-                children: AppStore.tools.map((e) => ToolCard(tool: e)).toList(),
+                children: AppStore.tools
+                    .map(
+                      (e) => ToolCard(tool: e),
+                    )
+                    .toList(),
               ),
             ),
           ],
@@ -67,8 +71,8 @@ class ToolCard extends StatelessWidget {
           children: [
             Image.asset(
               tool.image,
-              width: 50,
-              height: 50,
+              width: MediaQuery.of(context).size.width * 0.1,
+              height: MediaQuery.of(context).size.width * 0.1,
             ),
             SizedBox(height: 5),
             Text(

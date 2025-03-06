@@ -7,10 +7,10 @@ part of 'model.dart';
 // **************************************************************************
 
 VisageDetect _$VisageDetectFromJson(Map<String, dynamic> json) => VisageDetect(
-      json['x'] as int,
-      json['y'] as int,
-      json['width'] as int,
-      json['height'] as int,
+      (json['x'] as num).toInt(),
+      (json['y'] as num).toInt(),
+      (json['width'] as num).toInt(),
+      (json['height'] as num).toInt(),
     );
 
 Map<String, dynamic> _$VisageDetectToJson(VisageDetect instance) =>
